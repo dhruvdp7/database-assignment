@@ -1,0 +1,24 @@
+1.List the customer name, check number, payment date and amount for the customer with customer number 1001.
+
+SELECT customers.customerNumber, customerName , checkNumber, paymentDate , amount  from 
+customers INNER JOIN payments ON customers.customerNumber = payments.customerNumber WHERE customers.customernumber = 1001;
+________________________________________________________________________________________________________________________________________________
+
+2.List the employee number, last name and first name for all the employees  who reports to their manager with employee id 1001.
+
+SELECT employeeNumber, lastName , firstName from employees where reportsTo = 1001;
+________________________________________________________________________________________________________________________________________________ 
+
+3.List the customer name, phone and total amount of all customers with credit limit greater than 10000.
+
+SELECT c.customerName , c.phone , sum(payments.amount) from (SELECT * FROM customers WHERE creditlimit>10000) c
+JOIN payments ON c.customernumber = payments.customernumber GROUP BY c.customernumber ;
+_________________________________________________________________________________________________________________________________________________
+
+4.List all the order number, order date, product code, product name, quantity ordered, price each  for the customer with
+customer number 1001.
+
+SELECT orders.orderNumber, orders.orderDate, orderdetails.productCode, products.productName, 
+orderdetails.quantityordered, orderdetails.priceeach FROM orders INNER JOIN orderdetails.orderNumber
+INNER JOIN products ON orderdetails.productcode = products.productcode ; 
+
